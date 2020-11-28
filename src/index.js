@@ -1,20 +1,13 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './containers/Header'
-import HeroSection from './containers/HeroSection'
-import Home from './containers/Home'
-import Layout from './containers/Layout'
-import Footer from './containers/Footer'
+import App from './App'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Layout />
-    <HeroSection />
-    <Home/>
-    <Footer/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -4,6 +4,7 @@ export const HeroContainer = styled.div`
     display: flex;
     margin-top: 2em;
     margin-left: 10.4em;
+    margin-bottom: 2em;
     width: 1000px;
     height: 100%;
 `
