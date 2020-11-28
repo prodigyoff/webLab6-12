@@ -11,6 +11,7 @@ export const CatalogContainer = styled.div `
 export const FilterForm = styled.form`
     display: flex;
     width: 500px;
+    color: grey;
     justify-content: space-around;
     align-items: center;
 `
@@ -19,10 +20,10 @@ export const FilterCategory = styled.select`
     height: 36px;
     width: 150px;
     border-radius: 12px;
-    color: black;
+    color: grey;
     text-align: center;
     background-color: white;
-    border-color: grey;
+    border: 1px solid grey;
 `
 
 export const SearchContainer = styled.div`
@@ -36,7 +37,7 @@ export const InputBox = styled.input`
     width: 150px;
     font-size: 16px;
     background-color: white;
-    border-color: grey;
+    border: 1px solid grey;
     border-radius: 12px;
 `
 
@@ -46,5 +47,6 @@ export const SearchButton = styled.button`
     border-radius: 12px;
     font-size: 16px;
     background-color: white;
-    border-color: grey;
+    border: 1px solid grey;
+    color: grey;
 `
