@@ -3,7 +3,7 @@ import { CardFooter, ShowMoreButton } from '../styles/CardItem.styles'
 
 const { Meta } = Card
 
-    const CardItem = ({ title, description, imageSrc, price }) =>{
+    const CardItem = ({ title, description, imageSrc, price, id }) =>{
         return(
         <Card
             hoverable
@@ -16,7 +16,7 @@ const { Meta } = Card
             <CardFooter>
             <Meta title={title} description={description}/>
                 <p>${price}</p>
-                <ShowMoreButton>Show more</ShowMoreButton>
+                <ShowMoreButton href={'/item/' + id}>Show more</ShowMoreButton>
             </CardFooter>
         </Card>
         )}

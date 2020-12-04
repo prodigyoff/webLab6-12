@@ -5,10 +5,12 @@ import Header from './containers/Header'
 import HeroSection from './containers/HeroSection'
 import Home from './containers/Home'
 import ProductsListHome from './containers/ProductsListHome'
-import ProductsListCatalog from './containers/ProductsListCatalog'
 import Layout from './containers/Layout'
 import Footer from './containers/Footer'
-import Catalog from './containers/Catalog'
+import Catalog from './pages/Catalog'
+import ItemPage from './pages/ItemPage'
+import {data} from './components/Data'
+import HomePage from './pages/HomePage'
 
 const App = () => {
   return (
@@ -16,14 +18,13 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path = '/'>
-        <Layout />
-        <HeroSection />
-        <Home/>
-        <ProductsListHome/>
+          <HomePage/> 
         </Route>
-        <Route exact path = '/catalog'>
-          <Catalog/>
-          <ProductsListCatalog/>
+        <Route path = '/catalog'>
+          <Catalog items={data}/>
+        </Route>
+        <Route path = {`/item/:id`}>
+          <ItemPage items={data}/>
         </Route>
       </Switch>
       <Footer/>

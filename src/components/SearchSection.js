@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { SearchContainer, InputBox, SearchButton } from '../styles/Catalog.styles'
+import { SearchContainer, InputBox, SearchButton, ClearButton } from '../styles/Catalog.styles'
 
-const SearchBox = () =>{
+const SearchBox = ({state: [searchQuery, setSearchQuery]}) =>{
 
-    const [ searchQuery, setSearchQuery] = useState('');
+    const [ text, setText] = useState('');
 
     return(
         <SearchContainer>
-            <InputBox value={searchQuery} placeholder='Search...' onChange={e => (setSearchQuery(e.target.value))}/>
-            <SearchButton onClick={e =>(e.preventDefault())}>Search</SearchButton>
+            <InputBox value={text} placeholder='Search...' onChange={e => (setText(e.target.value))}/>
+            <SearchButton onClick={e =>(setSearchQuery(text))}>Search</SearchButton>
+            <ClearButton onClick={e => {setSearchQuery(''); setText('')}}>Clear</ClearButton>
         </SearchContainer>
     );
 }

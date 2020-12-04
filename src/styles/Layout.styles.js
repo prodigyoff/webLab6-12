@@ -50,7 +50,7 @@ export const LearnMoreButton = styled.button`
    transition: all 0.4s;
    cursor: pointer;
    margin: 5px;
-
+   outline: none;
    &:hover{
        opacity: 100%;
    }
