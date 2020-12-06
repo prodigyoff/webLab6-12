@@ -2,23 +2,27 @@ import CardItem from '../components/CardItem'
 import { CardWrapper } from '../styles/ProductsLists.styles'
 import { useEffect, useState } from 'react'
 import React from 'react';
+import { getItems } from '../connection';
+import Spinner from '../components/Spinner';
 
 const ProductsListHome = (props) => {
-    const [food, setItems] = useState(props.items.slice(0, 3));
+    const [items, setItems] = useState([]);
     useEffect(() => {
-        let featuredItems = props.items;
-        setItems(featuredItems.slice(0, 3));
-    },[props.items]);
+        (async function () {
+            setItems(await getItems());
+        })()
+    }, []);
+    if (items.length == 0) { return <Spinner /> }
     return(
             <CardWrapper>
-                {food.slice(0, 3).map(({ title, price, description, img, id }) => (
+                {items.slice(0, 3).map((item) => (
                     <CardItem
-                        title={title}
-                        description={description}
-                        imageSrc={img}
-                        price={price}
-                        id={id}
-                        key={id}
+                        title={item.title}
+                        description={item.description}
+                        imageSrc={item.img}
+                        price={item.price}
+                        id={item.id}
+                        key={item.id}
                     />
                 ))}
             </CardWrapper>

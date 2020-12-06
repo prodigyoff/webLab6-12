@@ -7,6 +7,7 @@ export const ItemContainer = styled.div`
     margin: 0 auto 50px;
     display: flex;
     justify-content: center;
+    align-items: center;
 `
 
 export const Image = styled.img`
@@ -29,7 +30,6 @@ export const ItemDescription = styled.div`
 export const ItemInfo = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
 `
 
 export const ButtonsContainer = styled.div`

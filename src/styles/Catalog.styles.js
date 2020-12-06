@@ -4,6 +4,7 @@ import { LearnMoreButton } from './Layout.styles'
 export const CatalogContainer = styled.div `
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 85.3vh;
 `
 
@@ -74,5 +75,4 @@ export const FilterContainer = styled.div `
 export const ViewMoreButton = styled(LearnMoreButton)`
    background-color: #d9e4f5;
    background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
-   margin-left: 44.5%;
 `

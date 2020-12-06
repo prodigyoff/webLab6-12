@@ -16,7 +16,7 @@ const Header = () =>{
                 <CoffeeOutlined style={{fontSize:30, color:'grey'}}/>
                 <HeaderLink heading='Home' Link = '/'/>
                 <HeaderLink heading="Market"/>
-                <HeaderLink heading="Catalog" Link = '/catalog'/>
+                <HeaderLink heading="Catalog" Link = '/item'/>
                 <HeaderLink heading="Chart"/>
             </HeaderNavigations>
         </HeaderContainer>
