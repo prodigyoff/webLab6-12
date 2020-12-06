@@ -41,6 +41,7 @@ export const InputBox = styled.input`
     border: 1px solid grey;
     border-radius: 12px;
     margin-right: 20px;
+    outline: none;
     color: grey;
 `
 
