@@ -1,29 +1,33 @@
-const reducer = (state = [], { type, payload }) => {
-    let index = state.findIndex(item => item.id === payload.id);
-    switch (type) {
-        case 'ADD':
-            if (index !== -1) {
-                return state;
-            } else {
-                return [...state, { ...payload, counter: 1 }];
-            }
-        case 'INCREMENT':
-            state[index].counter += 1;
-            return [...state];
-        case 'DECREMENT':
-            if (state[index].counter > 1) {
-                state[index].counter -= 1;
-                return [...state];
-            } else {
-                state.splice(index, 1);
-                return [...state];
-            }
-        case 'REMOVE':
-            state.splice(index, 1);
-            return [...state];
-        default:
-            return state;
-    }
-}
+import { createReducer } from '@reduxjs/toolkit'
+import { add, remove, increment, decrement } from '../store/Actions';
 
-export default reducer;
+const itemReducer = createReducer([], (builder) => {
+    builder
+    .addCase(add, (state, action) => {
+        let index = state.findIndex(item => item.id === action.payload.id);
+        if (index !== -1) {
+            return [...state];
+        } else {
+            return [...state, { ...action.payload, counter: 1 }];
+        }
+      })
+    builder
+    .addCase(remove, (state, action) => {
+        let index = state.findIndex(item => item.id === action.payload.id);
+        state.splice(index, 1);
+      })
+    builder
+    .addCase(increment, (state, action) => {
+        let index = state.findIndex(item => item.id === action.payload.id);
+        state[index].counter += 1;
+      })
+    builder
+    .addCase(decrement, (state, action) => {
+        let index = state.findIndex(item => item.id === action.payload.id);
+        if (state[index].counter > 1) {
+            state[index].counter -= 1;
+        }
+      })
+})
+
+export default itemReducer;

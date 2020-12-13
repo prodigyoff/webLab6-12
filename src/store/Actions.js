@@ -1,27 +1,6 @@
-export const add = (payload) => {
-    return {
-        type: 'ADD',
-        payload
-    }
-}
+import { createAction } from '@reduxjs/toolkit'
 
-export const remove = (payload) => {
-    return {
-        type: 'REMOVE',
-        payload
-    }
-}
-
-export const increment = (payload) => {
-    return {
-        type: 'INCREMENT',
-        payload
-    }
-}
-
-export const decrement = (payload) => {
-    return {
-        type: 'DECREMENT',
-        payload
-    }
-}
+export const add = createAction('ADD')
+export const remove = createAction('REMOVE')
+export const increment = createAction('INCREMENT')
+export const decrement = createAction('DECREMENT')
