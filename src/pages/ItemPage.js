@@ -3,8 +3,11 @@ import { getItemById } from '../connection';
 import { ItemContainer, ButtonsContainer, ItemPageButton, Image, ItemTitle, ItemDescription, ItemInfo } from '../styles/ItemPage.styles';
 import Spinner from '../components/Spinner';
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { add } from '../store/Actions'
 
 const ItemPage = (props) =>{
+    const dispatch = useDispatch();
     const { id } = useParams();
 
     async function loadItem(id) {
@@ -28,7 +31,7 @@ const ItemPage = (props) =>{
             <Link to='/item'>
                 <ItemPageButton>Back to catalog</ItemPageButton>
             </Link>
-            <ItemPageButton>Add to chart</ItemPageButton>
+            <ItemPageButton onClick={() => dispatch(add(item))}>Add to Cart</ItemPageButton>
         </ButtonsContainer>
             </ItemInfo>
         </ItemContainer>

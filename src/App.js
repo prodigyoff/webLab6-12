@@ -5,6 +5,7 @@ import Footer from './containers/Footer'
 import Catalog from './pages/Catalog'
 import ItemPage from './pages/ItemPage'
 import HomePage from './pages/HomePage'
+import CartPage from './pages/CartPage'
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
         </Route>
         <Route path = {`/item/:id`}>
           <ItemPage/>
+        </Route>
+        <Route path = '/cart'>
+          <CartPage/>
         </Route>
       </Switch>
       <Footer/>

@@ -1,9 +1,10 @@
-import {HeaderContainer, HeaderNavigations, HeaderLinks} from '../styles/Header.styles.js'
+import {HeaderContainer, HeaderNavigations, HeaderLinks, NavLink} from '../styles/Header.styles.js'
 import {CoffeeOutlined} from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 const HeaderLink = (props) =>{
     return(
-        <HeaderLinks href = {props.Link}>
+        <HeaderLinks>
             {props.heading}
         </HeaderLinks>
     )
@@ -14,10 +15,15 @@ const Header = () =>{
         <HeaderContainer>
             <HeaderNavigations>
                 <CoffeeOutlined style={{fontSize:30, color:'grey'}}/>
-                <HeaderLink heading='Home' Link = '/'/>
-                <HeaderLink heading="Market"/>
-                <HeaderLink heading="Catalog" Link = '/item'/>
-                <HeaderLink heading="Chart"/>
+                <NavLink to = '/' style={{textDecoration:'none'}}>
+                <HeaderLink heading='Home'/>
+                </NavLink>
+                <NavLink to = '/item' style={{textDecoration:'none'}}>
+                <HeaderLink heading="Catalog"/>
+                </NavLink>
+                <NavLink to = '/cart' style={{textDecoration:'none'}}>
+                <HeaderLink heading="Cart"/>
+                </NavLink>
             </HeaderNavigations>
         </HeaderContainer>
     )
