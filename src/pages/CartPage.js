@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, remove } from '../store/Actions';
-import { CartContainer, ItemContainer, CountContainer, DeleteButton, EmptyStyle } from '../styles/CartPage.styles'
+import { CartContainer, ItemContainer, CountContainer, DeleteButton, EmptyStyle, NavButton } from '../styles/CartPage.styles'
 
 const CartPage = () =>{
     const dispatch = useDispatch();
@@ -29,6 +30,9 @@ const CartPage = () =>{
                 </ItemContainer>
             )}
             <h1>Total: {totalPrice}$</h1>
+            <Link to='/checkout'>
+                <NavButton>Continue</NavButton>
+            </Link>
         </CartContainer>
     )
 }

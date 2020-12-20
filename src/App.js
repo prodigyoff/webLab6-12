@@ -6,6 +6,8 @@ import Catalog from './pages/Catalog'
 import ItemPage from './pages/ItemPage'
 import HomePage from './pages/HomePage'
 import CartPage from './pages/CartPage'
+import CheckoutPage from './pages/CheckoutPage'
+import SuccessPage from './pages/SuccessPage'
 
 const App = () => {
   return (
@@ -23,6 +25,12 @@ const App = () => {
         </Route>
         <Route path = '/cart'>
           <CartPage/>
+        </Route>
+        <Route path="/checkout">
+          <CheckoutPage />
+        </Route>
+        <Route path="/success">
+          <SuccessPage />
         </Route>
       </Switch>
       <Footer/>

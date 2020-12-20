@@ -72,3 +72,15 @@ export const ModalContent = styled.div`
     color: white;
     border-radius: 10px;
 `
+
+export const NavButton = styled.button`
+    width: 210px;
+    height: 70px;
+    border-radius: 12px;
+    font-size: 26px;
+    font-weight: 700;
+    border: 1px solid grey;
+    color: grey;
+    outline: none;
+    margin-bottom: 20px;
+`
