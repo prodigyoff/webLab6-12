@@ -8,29 +8,27 @@ import HomePage from './pages/HomePage'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import SuccessPage from './pages/SuccessPage'
+import ProtectedRoute from './components/ProtectedRoute'
+import RegisterPage from './pages/RegisterPage'
+import LoginPage from './pages/LoginPage'
+
 
 const App = () => {
   return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path = '/'>
-          <HomePage/> 
+        <ProtectedRoute component={<HomePage/>} path={'/'} exact />
+        <ProtectedRoute component={<Catalog />} path={'/item'} />
+        <ProtectedRoute component={<ItemPage />} path={'/item/:id'} />
+        <ProtectedRoute component={<CartPage />} path={'/cart'} />
+        <ProtectedRoute component={<CheckoutPage />} path={'/checkout'} />
+        <ProtectedRoute component={<SuccessPage />} path={'/success'} />
+        <Route path='/register'>
+          <RegisterPage />
         </Route>
-        <Route exact path = '/item'>
-          <Catalog/>
-        </Route>
-        <Route path = {`/item/:id`}>
-          <ItemPage/>
-        </Route>
-        <Route path = '/cart'>
-          <CartPage/>
-        </Route>
-        <Route path="/checkout">
-          <CheckoutPage />
-        </Route>
-        <Route path="/success">
-          <SuccessPage />
+        <Route path='/login'>
+          <LoginPage />
         </Route>
       </Switch>
       <Footer/>

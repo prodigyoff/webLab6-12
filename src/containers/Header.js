@@ -1,6 +1,6 @@
 import {HeaderContainer, HeaderNavigations, HeaderLinks, NavLink} from '../styles/Header.styles.js'
 import {CoffeeOutlined} from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 const HeaderLink = (props) =>{
     return(
@@ -11,6 +11,20 @@ const HeaderLink = (props) =>{
 }
 
 const Header = () =>{
+    let history = useHistory();
+    let isAuth = false;
+    const username = localStorage.getItem("username");
+    const password = localStorage.getItem("password");
+    const email = localStorage.getItem("email");
+    if (username != null && email != null && password != null) {
+        isAuth = true;
+    }
+  
+    const logout = () => {
+      localStorage.clear();
+      history.push("/login");
+      history.go(0);
+    };
     return (
         <HeaderContainer>
             <HeaderNavigations>
@@ -24,6 +38,20 @@ const Header = () =>{
                 <NavLink to = '/cart' style={{textDecoration:'none'}}>
                 <HeaderLink heading="Cart"/>
                 </NavLink>
+                {isAuth ? (
+                        <NavLink style={{ textDecoration: 'none' }} onClick={logout}>
+                            <HeaderLink heading = 'Log out' />
+                        </NavLink>
+                        ) : (
+                        <>
+                            <NavLink style={{ textDecoration: 'none' }} to="/login">
+                                <HeaderLink heading = 'Login' />
+                            </NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to="/register">
+                                <HeaderLink heading = 'Register' />
+                            </NavLink>
+                        </>
+                        )}
             </HeaderNavigations>
         </HeaderContainer>
     )
