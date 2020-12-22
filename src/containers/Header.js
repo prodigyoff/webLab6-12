@@ -21,7 +21,7 @@ const Header = () =>{
     }
   
     const logout = () => {
-      localStorage.setItem('isAuth', false)
+      localStorage.clear()
       history.push("/login");
       history.go(0);
     };
@@ -40,7 +40,7 @@ const Header = () =>{
                 </NavLink>
                 {isAuth ? (
                         <NavLink style={{ textDecoration: 'none' }} onClick={logout}>
-                            <HeaderLink heading = 'Log out' />
+                            <HeaderLink heading = 'Logout' />
                         </NavLink>
                         ) : (
                         <>

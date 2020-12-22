@@ -19,8 +19,8 @@ const App = () => {
       <Header />
       <Switch>
         <ProtectedRoute component={<HomePage/>} path={'/'} exact />
-        <ProtectedRoute component={<Catalog />} path={'/item'} />
-        <ProtectedRoute component={<ItemPage />} path={'/item/:id'} />
+        <ProtectedRoute component={<Catalog />} exact path={'/item'} />
+        <ProtectedRoute component={<ItemPage />} exact path={'/item/:id'} />
         <ProtectedRoute component={<CartPage />} path={'/cart'} />
         <ProtectedRoute component={<CheckoutPage />} path={'/checkout'} />
         <ProtectedRoute component={<SuccessPage />} path={'/success'} />
