@@ -37,7 +37,9 @@ const RegisterPage = () => {
               return /\s/.test(value) ? false : true;
             }),
         
-          email: Yup.string().email('Invalid email').required('Required'),
+          email: Yup.string()
+            .matches('^[a-zA-Z0-9\.]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$','You should write correct email adress')
+            .required('This field is required'),
           password: Yup.string()
             .min(8, 'Too Short!')
             .max(20, 'Too Long!')
@@ -47,8 +49,8 @@ const RegisterPage = () => {
               return /\s/.test(value) ? false : true;
             })
             .matches(
-              /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-              'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+              /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/,
+              'Must contain atleast 8 characters, One uppercase, One lowercase, One number and one special case character'
             ),
             confirmPassword: Yup.string()
             .min(8, 'Too Short!')
