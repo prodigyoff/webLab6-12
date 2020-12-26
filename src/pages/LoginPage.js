@@ -13,14 +13,14 @@ const LoginPage = () => {
   };
 
   const submitForm = (values) => {
-  const username = localStorage.getItem('username');
-  const password = localStorage.getItem('password');
-  const email = localStorage.getItem('email');
-  localStorage.setItem('isAuth', true);
-  if ((username === values.username || email === values.username) && password === values.password) {
-    history.push("/");
-    history.go(0);
-  }
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    const email = localStorage.getItem('email');
+    localStorage.setItem('isAuth', true);
+    if ((username === values.username || email === values.username) && password === values.password) {
+      history.push("/");
+      history.go(0);
+    }
   };
 
   return (

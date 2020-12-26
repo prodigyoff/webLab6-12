@@ -12,16 +12,10 @@ const HeaderLink = (props) =>{
 
 const Header = () =>{
     let history = useHistory();
-    let isAuth = false;
-    const username = localStorage.getItem("username");
-    const password = localStorage.getItem("password");
-    const email = localStorage.getItem("email");
-    if (username != null && email != null && password != null) {
-        isAuth = true;
-    }
+    const isAuth = localStorage.getItem('isAuth');
   
     const logout = () => {
-      localStorage.clear()
+      localStorage.setItem('isAuth', 'false')
       history.push("/login");
       history.go(0);
     };
@@ -38,7 +32,7 @@ const Header = () =>{
                 <NavLink to = '/cart' style={{textDecoration:'none'}}>
                 <HeaderLink heading="Cart"/>
                 </NavLink>
-                {isAuth ? (
+                {isAuth === 'true' ? (
                         <NavLink style={{ textDecoration: 'none' }} onClick={logout}>
                             <HeaderLink heading = 'Logout' />
                         </NavLink>

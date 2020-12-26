@@ -16,6 +16,7 @@ const RegisterPage = () => {
     localStorage.setItem('username', values['username']);
     localStorage.setItem('email', values['email']);
     localStorage.setItem('password', values['password']);
+    localStorage.setItem('isAuth', false);
     history.push('/login');
   };
 
