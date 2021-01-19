@@ -1,11 +1,21 @@
 import { Link, useParams } from 'react-router-dom';
+import { getItemById } from '../connection';
 import { ItemContainer, ButtonsContainer, ItemPageButton, Image, ItemTitle, ItemDescription, ItemInfo } from '../styles/ItemPage.styles';
-import CardItem from '../components/CardItem'
+import Spinner from '../components/Spinner';
+import { useEffect, useState } from 'react'
 
 const ItemPage = (props) =>{
     const { id } = useParams();
-    const item = props.items.find(item => (item.id === parseInt(id)));
 
+    async function loadItem(id) {
+        setItem(await getItemById(id));
+    }
+
+    const [item, setItem] = useState();
+
+    useEffect(() => loadItem(id), []);
+
+    if (!item) { return <Spinner /> }
     return(
         <>
         <ItemContainer>
@@ -15,7 +25,7 @@ const ItemPage = (props) =>{
                 <ItemDescription>{item.description}</ItemDescription>
                 <ItemDescription>Price: {item.price}$</ItemDescription>
                 <ButtonsContainer>
-            <Link to='/catalog'>
+            <Link to='/item'>
                 <ItemPageButton>Back to catalog</ItemPageButton>
             </Link>
             <ItemPageButton>Add to chart</ItemPageButton>

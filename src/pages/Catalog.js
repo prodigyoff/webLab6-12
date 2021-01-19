@@ -3,23 +3,32 @@ import {CardWrapper} from '../styles/ProductsLists.styles'
 import { useEffect, useState } from 'react'
 import FilterTile from '../components/FilterTile'
 import CardItem from '../components/CardItem'
+import Spinner from '../components/Spinner'
 import { ViewMoreButton } from '../styles/Catalog.styles'
+import { getFilteredItems } from '../connection'
 
 const Catalog = (props) =>{
     const [border, setBorder] = useState(3);
-    const [food, setItems] = useState(props.items.slice(0, border));
+    const [items, setItems] = useState([]);
+    const [showedItems, setShowedItems] = useState([]);
     const [filterType, setFilterType] = useState('None');
     const [priceFilter, setPriceFilter] = useState('None');
     const [searchText, setSearchText] = useState('')
 
     useEffect(() => {
+        (async function () {
+            setItems(await getFilteredItems(filterType, priceFilter));
+        })()
+    }, [filterType, priceFilter]);
+
+    useEffect(() => {
         const pattern = new RegExp(searchText, '');
 
-        let filteredItems = props.items.filter(food => (searchText === '' ||
-            pattern.test(food.title) || pattern.test(food.description) ||
-            pattern.test(food.price)));
+        let filteredItems = items.filter(item => (searchText === '' ||
+            pattern.test(item.title) || pattern.test(item.description) ||
+            pattern.test(item.price)));
 
-        filteredItems = filteredItems.filter(food => (food.type === filterType ||
+        filteredItems = filteredItems.filter(item => (item.type === filterType ||
             filterType === 'None'));
 
         if (priceFilter === "Low to high"){
@@ -29,13 +38,14 @@ const Catalog = (props) =>{
             filteredItems = filteredItems.sort((o1, o2) => (o2.price - o1.price))
         } 
 
-        setItems(filteredItems.slice(0, border));
-    }, [border, filterType, priceFilter, searchText, props.items]);
+        setShowedItems(filteredItems.slice(0, border));
+    }, [border, filterType, priceFilter, searchText, items]);
 
     function showMore() {
         setBorder(border + 3);
     }
 
+    if (showedItems.length == 0) { return <Spinner /> }
     return(
         <CatalogContainer>
         <FilterTile type={[filterType, setFilterType]}
@@ -43,14 +53,14 @@ const Catalog = (props) =>{
                     search={[searchText, setSearchText]}
         />
         <CardWrapper>
-        {food.map(({ title, price, description, img, id }) => (
+        {showedItems.map((item) => (
                     <CardItem
-                        title={title}
-                        description={description}
-                        imageSrc={img}
-                        price={price}
-                        id={id}
-                        key={id}
+                        title={item.title}
+                        description={item.description}
+                        imageSrc={item.img}
+                        price={item.price}
+                        id={item.id}
+                        key={item.id}
                     />
                 ))}
         </CardWrapper>
