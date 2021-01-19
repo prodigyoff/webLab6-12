@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { add, remove, increment, decrement } from '../store/Actions';
+import { add, remove, increment, decrement, clear } from '../store/Actions';
 
 const itemReducer = createReducer([], (builder) => {
     builder
@@ -28,6 +28,10 @@ const itemReducer = createReducer([], (builder) => {
             state[index].counter -= 1;
         }
       })
+      builder
+      .addCase(clear, (state) => {
+        state.splice(0, state.length)
+        })
 })
 
 export default itemReducer;
