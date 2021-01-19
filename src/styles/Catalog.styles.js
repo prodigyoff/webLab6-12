@@ -1,11 +1,10 @@
 import styled from 'styled-components'
+import { LearnMoreButton } from './Layout.styles'
 
 export const CatalogContainer = styled.div `
     display: flex;
-    max-width: 1000px;
-    margin: 15px auto;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    min-height: 85.3vh;
 `
 
 export const FilterForm = styled.form`
@@ -24,6 +23,7 @@ export const FilterCategory = styled.select`
     text-align: center;
     background-color: white;
     border: 1px solid grey;
+    outline: none;
 `
 
 export const SearchContainer = styled.div`
@@ -39,6 +39,8 @@ export const InputBox = styled.input`
     background-color: white;
     border: 1px solid grey;
     border-radius: 12px;
+    margin-right: 20px;
+    color: grey;
 `
 
 export const SearchButton = styled.button`
@@ -46,7 +48,31 @@ export const SearchButton = styled.button`
     width: 150px;
     border-radius: 12px;
     font-size: 16px;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid grey;
     color: grey;
+    outline: none;
+`
+
+export const ClearButton = styled(SearchButton)`
+    margin-left: 10px;
+`
+
+export const SelectLabel = styled.label`
+    color: grey;
+    font-size: 22px;
+`
+
+export const FilterContainer = styled.div `
+    display: flex;
+    width: 1000px;
+    margin: 15px auto;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const ViewMoreButton = styled(LearnMoreButton)`
+   background-color: #d9e4f5;
+   background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+   margin-left: 44.5%;
 `

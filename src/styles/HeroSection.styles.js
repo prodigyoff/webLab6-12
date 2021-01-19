@@ -6,7 +6,7 @@ export const HeroContainer = styled.div`
     margin-left: 10.4em;
     margin-bottom: 2em;
     width: 1000px;
-    height: 100%;
+    height: 100%;   
 `
 
 export const StyledImage = styled.img`

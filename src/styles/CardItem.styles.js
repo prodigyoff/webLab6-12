@@ -13,8 +13,12 @@ export const CardFooter = styled.div`
     }
 `
 
-export const ShowMoreButton = styled.button`
+export const ShowMoreButton = styled.a`
    float: right;
+   display: flex;
+   text-decoration: none;
+   justify-content: center;
+   align-items: center;
    border-radius: 4px;
    background-color: #d9e4f5;
    background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
