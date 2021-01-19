@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
     display: flex;
@@ -15,9 +16,11 @@ export const HeaderNavigations = styled.ul`
 export const HeaderLinks = styled.a`
     text-decoration: none;
     color: grey;
-    margin-top: 9px;
     cursor: pointer;
     &:hover{
         border-bottom: 1px solid grey;
     }
+`
+export const NavLink = styled(Link)`
+    margin-top: 9px;
 `

@@ -1,5 +1,7 @@
 import { Card } from 'antd'
 import { CardFooter, ShowMoreButton } from '../styles/CardItem.styles'
+import { Link } from 'react-router-dom'
+
 
 const { Meta } = Card
 
@@ -16,7 +18,9 @@ const { Meta } = Card
             <CardFooter>
             <Meta title={title} description={description}/>
                 <p>${price}</p>
-                <ShowMoreButton href={'/item/' + id}>Show more</ShowMoreButton>
+                <Link to = {'/item/' + id}>
+                <ShowMoreButton>Show more</ShowMoreButton>
+                </Link>
             </CardFooter>
         </Card>
         )}
