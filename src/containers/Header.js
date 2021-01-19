@@ -1,6 +1,6 @@
 import {HeaderContainer, HeaderNavigations, HeaderLinks, NavLink} from '../styles/Header.styles.js'
 import {CoffeeOutlined} from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 const HeaderLink = (props) =>{
     return(
@@ -11,6 +11,14 @@ const HeaderLink = (props) =>{
 }
 
 const Header = () =>{
+    let history = useHistory();
+    const isAuth = localStorage.getItem('isAuth');
+  
+    const logout = () => {
+      localStorage.setItem('isAuth', 'false')
+      history.push("/login");
+      history.go(0);
+    };
     return (
         <HeaderContainer>
             <HeaderNavigations>
@@ -24,6 +32,20 @@ const Header = () =>{
                 <NavLink to = '/cart' style={{textDecoration:'none'}}>
                 <HeaderLink heading="Cart"/>
                 </NavLink>
+                {isAuth === 'true' ? (
+                        <NavLink style={{ textDecoration: 'none' }} onClick={logout}>
+                            <HeaderLink heading = 'Logout' />
+                        </NavLink>
+                        ) : (
+                        <>
+                            <NavLink style={{ textDecoration: 'none' }} to="/login">
+                                <HeaderLink heading = 'Login' />
+                            </NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to="/register">
+                                <HeaderLink heading = 'Register' />
+                            </NavLink>
+                        </>
+                        )}
             </HeaderNavigations>
         </HeaderContainer>
     )
